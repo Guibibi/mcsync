@@ -23,17 +23,17 @@ class Mcsync extends Command {
   static args = [{name: 'file'}]
 
   async run() {
-    const {args, flags} = this.parse(Mcsync)
+    const {flags} = this.parse(Mcsync)
     if (flags.server) {
       console.log('server started')
       server.main()
     }
 
-    const name = flags.name ?? 'world'
+    /* const name = flags.name ?? 'world'
     this.log(`hello ${name} from ./src/index.ts`)
     if (args.file && flags.force) {
       this.log(`you input --force and --file: ${args.file}`)
-    }
+    } */
   }
 }
 
