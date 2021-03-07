@@ -343,7 +343,7 @@
     "colors" "^1.1.2"
     "string-width" "^4.2.0"
 
-"cli-ux@^5.2.1":
+"cli-ux@^5.2.1", "cli-ux@^5.5.1":
   "integrity" "sha512-t3DT1U1C3rArLGYLpKa3m9dr/8uKZRI8HRm/rXKL7UTjm4c+Yd9zHNWg1tP8uaJkUbhmvx5SQHwb3VWpPUVdHQ=="
   "resolved" "https://registry.npmjs.org/cli-ux/-/cli-ux-5.5.1.tgz"
   "version" "5.5.1"

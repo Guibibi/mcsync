@@ -1,5 +1,6 @@
 import {Command, flags} from '@oclif/command'
 import * as server from './server'
+import * as client from './client'
 
 class Mcsync extends Command {
   static description = 'Run the server-sync program'
@@ -18,6 +19,8 @@ class Mcsync extends Command {
 
     // flag to start server (-s, --server)
     server: flags.boolean({char: 's', description: 'Start the server'}),
+
+    ip: flags.string({char: 'i', description: 'Server IP'}),
   }
 
   static args = [{name: 'file'}]
@@ -27,6 +30,8 @@ class Mcsync extends Command {
     if (flags.server) {
       console.log('server started')
       server.main()
+    } else {
+      client.main()
     }
 
     /* const name = flags.name ?? 'world'
