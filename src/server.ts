@@ -20,9 +20,14 @@ let filesDiff: string[] = []
 export function main() {
   console.log(boxen(chalk.yellow('Server Starting'), vars.boxenOptions))
   serverFiles = lib.getMods()
+  if (serverFiles.length === 0) {
+    console.log(chalk.red('No mods folder found, exiting'))
+    return false
+  }
   console.log(serverFiles, 'server')
-
-  //startServer()
+  var myZip = lib.zipFiles(serverFiles, './mods')
+  console.log(myZip)
+  startServer()
 }
 
 function compareFiles() {
@@ -33,16 +38,17 @@ function compareFiles() {
 }
 
 function startServer() {
-  var server = net.createServer(c => {
-    console.log('Client has connected to server')
-    c.on('end', () => {
-      console.log('Server closed')
-    })
-    c.write('hello\r\n')
-    c.pipe(c)
+  const server = new net.Server()
+
+  server.listen(port, function () {
+    console.log(`Server listening for connection requests on socket localhost:${port}`)
   })
-  server.listen(8124, function () {
-    //'listening' listener
-    console.log('server bound')
+
+  server.on('connection', () => {
+    console.log('A new client has connected')
+  })
+
+  server.on('data', chunk => {
+    console.log(chunk)
   })
 }
